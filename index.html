@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #eightBall {
+            border-radius: 50%;
+            height: 500px;
+            width: 500px;
+            cursor: pointer;
+            border: solid black 1px;
+            margin: 10%;
+            background-color: black;
+
+
+        }
+
+        #centerBall {
+            margin: 50%;
+            border: solid black 1px;
+            font-size: 480%;
+            height: 100px;
+            width: 100px;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 50%;
+            background-color: white;
+        }
+
+        #textOutput {
+            font-size: 400%;
+            margin-left: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <Div id="App"></Div>
+
+    <script>
+        //Model
+        const App = document.getElementById('App')
+
+        const substantiv = ['mannen', 'katten', 'frosken', 'bananen', 'naboen', 'læreren', 'løken']
+        const verb = ['åt', 'kjeppjagde', 'lånte', 'terroriserte', 'hata', 'spurte', 'vaska']
+        const sisteordklasse = ['zebraen', 'nabokona', 'besteforeldrene', 'enGodNummer2', 'sparkesykkelen', 'ferrarien', 'romskipet']
+
+        //View
+        viewApp()
+        function viewApp() {
+            App.innerHTML = /*html*/`
+            <div onclick='genererSetning()' id="eightBall">
+            <div id="centerBall">8</div>
+            </div>
+            <div id="textOutput">x</div>
+            `;
+        }
+        //Controller
+        genererSetning()
+        function genererSetning(){
+            const randomSubstantiv = substantiv[Math.floor(Math.random() * substantiv.length)];
+            const randomVerb = verb[Math.floor(Math.random() * verb.length)];
+            const randomSisteordklasse = sisteordklasse[Math.floor(Math.random() * sisteordklasse.length)]
+
+            const randomsetning = `${randomSubstantiv} ${randomVerb} ${randomSisteordklasse}`;
+            document.getElementById('textOutput').innerHTML = randomsetning;
+        }
+    
+    </script>
+
+</body>
+
+</html>
